@@ -9,7 +9,7 @@ const app = express();
 
 //Settings
 app.set('port', process.env.PORT || 3000)
-app.set('views', path.join(_dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
     defaultLayout:'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
@@ -30,6 +30,9 @@ app.use(session({
 //Global Variables
 
 //Routes
+app.use(require('./routes/index'));
+app.use(require('./routes/notes'));
+app.use(require('./routes/users'));
 
 //Static Files
 
